@@ -97,3 +97,12 @@ ul.specs dt {
 h1 {
   border-bottom: 1px solid gray;
 }
+
+.search-history {
+  margin: 0;
+  padding: 0.25em 0;
+  list-style-type: none;
+}
+.search-history li {
+  padding-bottom: 0.75em;
+}

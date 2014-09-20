@@ -4,16 +4,35 @@
 
 var phonecatControllers = angular.module('phonecatControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
-  function($scope, Phone) {
-    $scope.phones = Phone.query();
-    $scope.orderProp = 'age';
+phonecatControllers.controller('PhoneSearchCtrl', ['$scope', '$state', 'SearchHistory', 
+  function($scope, $state, SearchHistory) {
+    $scope.orderProp     = 'age';
+    $scope.searchHistory = SearchHistory.getObservable();
+
+    $scope.focusSearch = function() {
+      $state.go('phones.list');
+    };
   }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-  function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone', 
+  function($scope, Phone) {
+    $scope.phones = Phone.query();
+  }]);
+
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$stateParams', 'Phone', 'SearchHistory',
+  function($scope, $routeParams, $stateParams, Phone, SearchHistory) {
+    $scope.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
+     
+      console.log('State Params');
+      console.dir($stateParams);
+      // Prevent padding this to the history
+      if ( !$stateParams.src || ($stateParams.src !== 'history') ) {
+        SearchHistory.add({
+          id:   phone.id,
+          name: phone.name
+        });
+      }
     });
 
     $scope.setImage = function(imageUrl) {

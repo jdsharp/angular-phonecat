@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query" ng-focus="focusSearch()"><br>
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+      </select>
+      <hr>
+      <strong>Recently Viewed</strong>
+      <ul class="search-history">
+        <li ng-repeat="phone in searchHistory">
+          <a href="#/phones/{{phone.id}}?src=history">{{phone.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+      <div ui-view></div>
+    </div>
+  </div>
+</div>
