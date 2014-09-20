@@ -10,13 +10,14 @@
         <option value="age">Newest</option>
       </select>
       <hr>
-      <strong>Recently Viewed</strong>
-      <ul class="search-history">
-        <li ng-repeat="phone in searchHistory">
-          <a href="#/phones/{{phone.id}}?src=history">{{phone.name}}</a>
-        </li>
-      </ul>
-
+      <div ng-if="searchHistory.length">
+        <strong>Recently Viewed</strong> <a ng-click="clearHistory()" class="clear-history">[Clear]</a>
+        <ul class="search-history">
+          <li ng-repeat="phone in searchHistory">
+            <a href="#/phones/{{phone.id}}?src=history">{{phone.name}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="col-md-10">
       <!--Body content-->

@@ -61,7 +61,6 @@ phonecatServices.factory('SearchHistory', [
           items = items.slice(0, maxHistoryItems);
         }
         storage.set(items);
-
         angular.copy(items, observable);
       },
       get: function() {
@@ -69,6 +68,10 @@ phonecatServices.factory('SearchHistory', [
       },
       getObservable: function() {
         return observable;
+      },
+      clear: function() {
+        storage.set([]);
+        angular.copy([], observable);
       }
     };
   }]);

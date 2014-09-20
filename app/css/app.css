@@ -106,3 +106,8 @@ h1 {
 .search-history li {
   padding-bottom: 0.75em;
 }
+
+.clear-history {
+  font-size: 0.8em;
+  cursor: pointer;
+}

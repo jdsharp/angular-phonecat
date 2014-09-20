@@ -12,6 +12,10 @@ phonecatControllers.controller('PhoneSearchCtrl', ['$scope', '$state', 'SearchHi
     $scope.focusSearch = function() {
       $state.go('phones.list');
     };
+
+    $scope.clearHistory = function() {
+      SearchHistory.clear();
+    };
   }]);
 
 phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone', 
