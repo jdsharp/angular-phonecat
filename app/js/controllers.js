@@ -28,8 +28,6 @@ phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$s
     $scope.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
      
-      console.log('State Params');
-      console.dir($stateParams);
       // Prevent padding this to the history
       if ( !$stateParams.src || ($stateParams.src !== 'history') ) {
         SearchHistory.add({
