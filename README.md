@@ -1,3 +1,12 @@
+# jdsharp's Updates
+
+* Added support for multiple ui-views via angular-ui-router (added via bower)
+* Clicking on the search input puts you in search results mode
+* Added a storage service backed by localstorage with fallback to in-memory storage for recently viewed phones
+* Recently viewed phones limited to 10 recent phones and will not add the current phone if it matches the last viewed phone
+* Clicking on a phone via recently viewed phones will not add it to the history list
+* Total length of development was 2.5 hours
+
 # AngularJS Phone Catalog Tutorial Application
 
 ## Overview
